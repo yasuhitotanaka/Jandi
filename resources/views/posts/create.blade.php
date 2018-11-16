@@ -3,7 +3,9 @@
 @section('content')
 
 <h3>投稿アイテムを作成します</h3>
+
 {!! Form::open(['class' => 'form', 'action' => 'postsController@store', 'method' => 'POST']) !!}
+  {{ csrf_field() }}
   <div class="form-group">
     {{ Form::label('title', 'タイトル') }}
     {{ Form::text('title', '', ['class' => 'form-control']), '', ['placeholder' => 'タイトルをいれてね'] }}

@@ -4,6 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Comment;
+
+function _get_comments($post_id) {
+  $comments = Comment::where('post_id', $post_id)->orderBy('id', 'asc')->get();
+  return $comments;
+}
 
 class postsController extends Controller
 {
@@ -61,7 +67,13 @@ class postsController extends Controller
      */
     public function show($id)
     {
-      //
+      $post = Post::find($id);
+      $comments = _get_comments($id);
+
+      return view('posts.detail')->with([
+          'post'=> $post,
+          'comments' => $comments,
+        ]);
     }
 
     /**

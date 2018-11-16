@@ -13,7 +13,7 @@
   @foreach($posts as $post)
   <div class="card">
     <div class="card-header">
-      {{ $post->title }}
+      <a href="{!! action('postsController@show', ['id' => $post->id]) !!}">{{ $post->title }}</a>
     </div>
     <div class="card-body">
       <h5 class="card-title">{{ $post->url }}</h5>
