@@ -15,7 +15,7 @@ class postsController extends Controller
     public function index()
     {
         $posts = Post::get();
-        return view('index')->with('posts', $posts);
+        return view('posts.index')->with('posts', $posts);
     }
 
     /**
@@ -25,7 +25,7 @@ class postsController extends Controller
      */
      public function create()
      {
-         return view('create');
+         return view('posts.create');
      }
 
      /**
