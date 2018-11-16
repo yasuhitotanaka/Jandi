@@ -11,6 +11,7 @@
   <body>
     <div class="container">
       @include('partials.header')
+      @include('partials.message')
       @yield('content')
     </div>
     @include('partials.footer')

@@ -6,20 +6,24 @@
   </button>
 
   <div class="">
-    現在の投稿数は<?php echo count($posts); ?>件です。
+    現在の投稿数は{{ count($posts) }}件です。
   </div>
 
-  @if(count($posts) == 0)
+  @if(count($posts) > 0)
+  @foreach($posts as $post)
   <div class="card">
     <div class="card-header">
-      Featured
+      {{ $post->title }}
     </div>
     <div class="card-body">
-      <h5 class="card-title">Special title treatment</h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <h5 class="card-title">{{ $post->url }}</h5>
+      <p class="card-text">{{ $post->description }}</p>
+    </div>
+    <div class="card-footer">
+      {{ $post->user }}
     </div>
   </div>
+  @endforeach
   @endif
 
 @endsection

@@ -23,21 +23,35 @@ class postsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+     public function create()
+     {
+         return view('create');
+     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+     /**
+      * Store a newly created resource in storage.
+      *
+      * @param  \Illuminate\Http\Request  $request
+      * @return \Illuminate\Http\Response
+      */
+     public function store(Request $request)
+     {
+         $this->validate($request, [
+           'title' => 'required',
+           'url' => 'required',
+           'user' => 'required',
+         ]);
+
+         $post = new Post;
+         $post->title = $request->input('title');
+         $post->url = $request->input('url');
+         $post->description = $request->input('description');
+         $post->user = $request->input('user');
+
+         $post->save();
+
+         return redirect('/')->with('success', 'Post Created');;
+     }
 
     /**
      * Display the specified resource.
