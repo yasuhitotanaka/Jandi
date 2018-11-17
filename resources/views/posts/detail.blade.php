@@ -11,6 +11,7 @@
     </div>
     <div class="card-footer">
       {{ $post->user }}  {{ $post->created_at }}
+          <a class="btn btn-success" href="{!! action('postsController@edit', ['post_id' => $post->id]) !!}">編集する</a>
     </div>
   </div>
 

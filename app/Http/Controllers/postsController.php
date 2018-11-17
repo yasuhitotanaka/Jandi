@@ -84,7 +84,8 @@ class postsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = Post::find($id);
+        return view('posts.edit')->with('post', $post);
     }
 
     /**
@@ -96,7 +97,21 @@ class postsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+          'title' => 'required',
+          'url' => 'required',
+          'user' => 'required',
+        ]);
+
+        $post = Post::find($id);
+        $post->title = $request->input('title');
+        $post->url = $request->input('url');
+        $post->description = $request->input('description');
+        $post->user = $request->input('user');
+
+        $post->save();
+
+        return redirect('/')->with('success', 'Post Updated');
     }
 
     /**
