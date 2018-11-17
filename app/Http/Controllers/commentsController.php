@@ -3,6 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Post;
+use App\Comment;
+
+
+function _get_post_title($post_id) {
+  $post = Post::find($post_id);
+  return $post->title;
+}
 
 class commentsController extends Controller
 {
@@ -21,9 +29,13 @@ class commentsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($post_id)
     {
-        //
+        $post_title = _get_post_title($post_id);
+        return view('comments.create')->with([
+          'post_id' => $post_id,
+          'post_title' => $post_title,
+          ]);
     }
 
     /**
@@ -32,9 +44,20 @@ class commentsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $post_id)
     {
-        //
+        $this->validate($request, [
+          'comment' => 'required',
+          'user' => 'required',
+        ]);
+
+        $comment = new Comment;
+        $comment->post_id = $post_id;
+        $comment->comment = $request->input('comment');
+        $comment->user = $request->input('user');
+        $comment->save();
+
+        return redirect('/post/' . $post_id)->with('success', 'Comment Created');;
     }
 
     /**

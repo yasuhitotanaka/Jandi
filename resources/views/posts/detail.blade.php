@@ -28,6 +28,6 @@
       </div>
     @endforeach
   @endif
-  <a href="#">コメントする。</a>
+  <a href="{!! action('commentsController@create', ['post_id' => $post->id]) !!}">コメントする。</a>
 
 @endsection

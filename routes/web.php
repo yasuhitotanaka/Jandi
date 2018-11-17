@@ -16,4 +16,7 @@ Route::get('/', 'postsController@index');
 Route::get('/create', 'postsController@create');
 Route::post('/create', 'postsController@store');
 
-Route::get('/post/{id}', 'postsController@show');
+Route::get('/post/{post_id}', 'postsController@show');
+
+Route::get('/post/{post_id}/comment', 'commentsController@create');
+Route::post('/post/{post_id}/comment', 'commentsController@store');
