@@ -20,3 +20,6 @@ Route::get('/post/{post_id}', 'postsController@show');
 
 Route::get('/post/{post_id}/comment', 'commentsController@create');
 Route::post('/post/{post_id}/comment', 'commentsController@store');
+
+Route::get('/post/{post_id}/comment/{comment_id}/edit', 'commentsController@edit');
+Route::post('/post/{post_id}/comment{comment_id}/edit', 'commentsController@update');

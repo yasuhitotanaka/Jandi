@@ -57,7 +57,7 @@ class commentsController extends Controller
         $comment->user = $request->input('user');
         $comment->save();
 
-        return redirect('/post/' . $post_id)->with('success', 'Comment Created');;
+        return redirect('/post/' . $post_id)->with('success', 'Comment Created');
     }
 
     /**
@@ -77,9 +77,16 @@ class commentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($post_id, $comment_id)
     {
-        //
+        $comment = Comment::find($comment_id);
+        $post_title = _get_post_title($post_id);
+
+        return view('comments.edit')->with([
+          'post_id' => $post_id,
+          'post_title' => $post_title,
+          'comment' => $comment,
+        ]);
     }
 
     /**
@@ -89,9 +96,19 @@ class commentsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $post_id, $comment_id)
     {
-        //
+        $this->validate($request, [
+          'comment' => 'required',
+          'user' => 'required',
+        ]);
+
+        $comment = Comment::find($comment_id);
+        $comment->comment = $request->input('comment');
+        $comment->user = $request->input('user');
+        $comment->save();
+
+        return redirect('/post/' . $post_id)->with('success', 'Comment Updated');
     }
 
     /**

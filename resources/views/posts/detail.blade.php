@@ -24,10 +24,11 @@
         </div>
         <div class="card-footer">
           {{ $comment->user }}  {{ $comment->created_at }}
+              <a class="btn btn-success" href="{!! action('commentsController@edit', ['post_id' => $post->id, 'comment_id' => $comment->id]) !!}">編集する</a>
         </div>
       </div>
     @endforeach
   @endif
-  <a href="{!! action('commentsController@create', ['post_id' => $post->id]) !!}">コメントする。</a>
+  <a class="btn btn-success" href="{!! action('commentsController@create', ['post_id' => $post->id]) !!}">コメントする。</a>
 
 @endsection
