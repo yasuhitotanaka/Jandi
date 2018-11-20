@@ -21,10 +21,10 @@
   </div>
 
   <div class="form-group">
-    {{ Form::label('title', 'ユーザー名') }}
+    {{ Form::label('title', '投稿者のTwitterアカウント(@以降)') }}
     {{ Form::text('user', '', ['class' => 'form-control']), '', ['placeholder' => 'ユーザー名をいれてね'] }}
   </div>
 
-  {{ Form::submit('作成する', ['class' => 'btn btn-success']) }}
+  {{ Form::submit('作成する', ['class' => 'btn btn-success btn-lg']) }}
 {!! Form::close() !!}
 @endsection

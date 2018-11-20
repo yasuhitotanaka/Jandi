@@ -10467,8 +10467,69 @@ a.text-dark:focus {
 }
 
 .navbar-laravel {
-  background-color: #fff;
-  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  padding-top: 16px;
+  background-color: #fffff0;
+}
+
+body {
+  background-color: #fffff0;
+}
+
+h1 a {
+  font-size: 60px;
+  color: #1aa3b1;
+}
+
+button {
+  margin-bottom: 25px;
+  margin-top: 15px;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.text-blue {
+  color: #1aa3b1;
+}
+
+a {
+  text-decoration: none;
+}
+
+.card-header,
+.card-footer {
+  background-color: #a5c9c1;
+}
+
+.card-header {
+  font-size: 24px;
+}
+
+.card-header a {
+  font-size: 24px;
+}
+
+div.card {
+  margin-bottom: 40px;
+}
+
+.post-counter,
+.comment-counter {
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+.explanation {
+  font-size: 24px;
+}
+
+label {
+  font-size: 18px;
+  color: #378488;
+}
+
+.navbar-laravel p {
+  font-size: 18px;
 }
 

@@ -16,6 +16,6 @@
     {{ Form::label('user', 'ユーザー名') }}
     {{ Form::text('user', '', ['class' => 'form-control']), '', ['placeholder' => 'ユーザー名をいれてね'] }}
   </div>
-  {{ Form::submit('投稿する', ['class' => 'btn btn-success']) }}
+  {{ Form::submit('投稿する', ['class' => 'btn btn-success btn-lg']) }}
 {!! Form::close() !!}
 @endsection

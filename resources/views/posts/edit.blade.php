@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h3>投稿アイテムを修正します</h3>
+<p class="explanation">投稿アイテムを修正します</p>
 
 {!! Form::open(['class' => 'form', 'action' => ['postsController@update', $post->id], 'method' => 'POST']) !!}
   {{ csrf_field() }}
@@ -21,10 +21,10 @@
   </div>
 
   <div class="form-group">
-    {{ Form::label('user', 'ユーザー名') }}
+    {{ Form::label('user', '投稿者のTwitterアカウント(@以降)') }}
     {{ Form::text('user', $post->user, ['class' => 'form-control']), '', ['placeholder' => 'ユーザー名をいれてね'] }}
   </div>
 
-  {{ Form::submit('更新する', ['class' => 'btn btn-success']) }}
+  {{ Form::submit('更新する', ['class' => 'btn btn-success btn-lg']) }}
 {!! Form::close() !!}
 @endsection
